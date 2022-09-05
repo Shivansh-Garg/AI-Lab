@@ -21,6 +21,24 @@ void dfs(list<int> adj_list[], int sv, int visited[], int counter, int width){
     }
 }
 
+void dfs2(list<int> adj_list[], int sv, int visited[], int counter, int width){
+    int temp = sv;
+    int temp2 = 0;
+    cout<<temp<<" ";
+    if(counter == 1){
+        return;
+    }
+    list<int> :: iterator it;
+
+    visited[sv] = 1;
+    for(it = adj_list[temp].begin();it != adj_list[temp].end(); ++it){
+        if(visited[*it] == 0 && temp2 < width){
+            visited[*it] = 1;
+            temp2++;
+            dfs2(adj_list,*it,visited,counter-1,width+1);
+        }
+    }
+}
 
 int main(){
      vector<vector<int>> graph_1 ={{0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -51,12 +69,12 @@ int main(){
     int width;
     width = 1;
     for(int i=1;i<=3;i++){
-        cout<<"w = "<<i<<" and depth = 3"<<endl;
+        cout<<"depth = "<<i<<" and starting width = 1"<<endl;
         for(int i=1;i<14;i++){
         visited_1[i] = 0;
         }
         width = i;
-        dfs(adj_list_1,1,visited_1,3,width);
+        dfs2(adj_list_1,1,visited_1,i,1);
         cout<<endl;
         cout<<"*************"<<endl;
     }
