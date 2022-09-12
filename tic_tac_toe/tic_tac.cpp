@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 void display(int board[]){
     for(int i=1;i<=9;i++){
@@ -14,6 +15,45 @@ void display(int board[]){
         if(i % 3 == 0){
             cout<<endl;
         }
+    }
+}
+int check_win(int num, int board[]){
+    vector<vector<int>> moves = {{-1,-1,-1},
+                                  {1,2,3},
+                                  {4,5,6},
+                                  {7,8,9},
+                                  {1,4,7},
+                                  {2,5,8},
+                                  {3,6,9},
+                                  {1,5,9},
+                                  {3,5,7}};
+    for(auto it = moves.begin()+1;it<moves.end();it++){
+        if(board[(*it)[0]]*board[(*it)[1]]*board[(*it)[2]] == num*num*num){
+            return 1;
+        }
+    }
+    return -1;
+}
+
+int poswin_2(int num, int board[]){
+    vector<vector<int>> moves = { {-1,-1,-1},
+                                  {1,2,3},
+                                  {4,5,6},
+                                  {7,8,9},
+                                  {1,4,7},
+                                  {2,5,8},
+                                  {3,6,9},
+                                  {1,5,9},
+                                  {3,5,7}};
+    for(auto it = moves.begin()+1;it<moves.end();it++){
+        if(board[(*it)[0]]*board[(*it)[1]]*board[(*it)[2]] == num*num*2){
+            for(int i=0;i<3;i++){
+                if(board[(*it)[i]] == 2){
+                    return (*it)[i];
+                }
+            }
+        }
+        return 0;
     }
 }
 int poswin(int num, int board[]){
@@ -125,6 +165,7 @@ void go(int box, int board[], int &turn){
 	}
 	turn = turn+1;
 }
+
 int main(){
 	cout<<"Enter 1 to choose X and 2 to choose O"<<endl;
 	int sturn;
@@ -227,6 +268,11 @@ int main(){
 		cout<<"Your turn, Enter the valid position where you want to put O "<<endl;
 		cin>>user;
 		go(user,board,turn);
+		if(check_win(3,board)){
+            cout<<"user wins"<<endl;
+            display(board);
+            return 0;
+		}
 		if(poswin(5,board) != 0){
 			go(poswin(5,board),board,turn);
 			display(board);
@@ -241,6 +287,11 @@ int main(){
 		cout<<"Your turn, Enter the valid position where you want to put O "<<endl;
 		cin>>user;
 		go(user,board,turn);
+		if(check_win(3,board)){
+            cout<<"user wins"<<endl;
+            display(board);
+            return 0;
+		}
 		display(board);
 	}
 
