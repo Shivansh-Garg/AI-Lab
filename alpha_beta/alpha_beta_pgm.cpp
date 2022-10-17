@@ -5,7 +5,7 @@ using namespace std;
 #define HUMAN 2
 
 int player = 3, opponent = 5;
-
+int count_times = 0;
 void showBoard(int board[]){
     for(int i=1;i<=9;i++){
         if(board[i] == 2){
@@ -79,6 +79,7 @@ int minimax(int board[], int depth, bool isAI, int edepth)
 {
     int score = 0;
     int bestScore = 0;
+    count_times = count_times+1;
     if (gameOver(board) == true)
     {
         if (isAI == true)
@@ -100,7 +101,7 @@ int minimax(int board[], int depth, bool isAI, int edepth)
                         board[i] = 5;
                         score = minimax(board, depth + 1, false,edepth);
                         board[i] = 2;
-                        if(score == 10){
+                        if(score == 1){
                             return score;
                         }
                         if (score > bestScore)
@@ -121,7 +122,7 @@ int minimax(int board[], int depth, bool isAI, int edepth)
                         board[i] = 3;
                         score = minimax(board, depth + 1, true,edepth);
                         board[i] = 2;
-                        if(score == -10){
+                        if(score == -1){
                             return score;
                         }
                         if (score < bestScore)
@@ -247,6 +248,7 @@ int main()
         }
 
         cout << "\nDo you want to quit(y/n) : ";
+        cout<< " number of times mini-max is called is : "<< count_times<<endl;
         cin >> conti;
 
     } while (conti == 'n');
