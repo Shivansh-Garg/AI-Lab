@@ -2,6 +2,10 @@
 using namespace std;
 
 
+//code is not working because i don't know how to implement the left part.
+// i.e what to do if the element is already present in the open or close list.
+
+
 int main(){
     vector<vector<int>> graph = {{0,6,3,1,0,0,0,0,0,0},
                                 {6,0,2,6,3,4,0,0,0,0},
@@ -45,6 +49,9 @@ int main(){
                }
                 else{
                     //left.
+                     //left.
+                     //left.
+                     //left.
                 }
             }
         }
