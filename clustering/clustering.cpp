@@ -15,10 +15,16 @@ float mean(vector<float> arr){
 int main(){
     srand(time(0));
     vector<float> arr;
+    int srange, erange;
+    cout<<"Enter the starting range of numbers:"<<endl;
+    cin>> srange;
+    cout<<"Enter the ending range of numbers :"<<endl;
+    cin>> erange;
     for(int i=0;i<100;i++){
-        int m = rand() % 100 +1;
+        int m = (rand() % (erange-srange+1)) +srange;
         arr.push_back(m);
     }
+
     vector<float> g1,g2,g3,g4;
 
     /*for(int i=0;i<100;i++){
