@@ -16,7 +16,7 @@ int main(){
     srand(time(0));
     vector<float> arr;
     for(int i=0;i<100;i++){
-        int m = rand() % 100;
+        int m = rand() % 100 +1;
         arr.push_back(m);
     }
     vector<float> g1,g2,g3,g4;
@@ -26,11 +26,16 @@ int main(){
     }
     cout<<endl;*/
 
+    int arr2[4];
+    for(int i=0;i<4;i++){
+        cout<<"Enter seed "<<i+1<<endl;
+        cin>>arr2[i];
+    }
 
-    g1.push_back(4);
-    g2.push_back(3);
-    g3.push_back(2);
-    g4.push_back(1);
+    g1.push_back(arr2[0]);
+    g2.push_back(arr2[1]);
+    g3.push_back(arr2[2]);
+    g4.push_back(arr2[3]);
 
     for(int i=0;i<50;i++){
         vector<float> a1,a2,a3,a4;
@@ -85,6 +90,7 @@ int main(){
         g2.push_back(a2[0]);
         g3.push_back(a3[0]);
         g4.push_back(a4[0]);
+
     }
     cout<<"G1 :"<<endl;
     for(int i=0;i<g1.size();i++){
@@ -111,3 +117,4 @@ int main(){
     cout<<endl;
     return 0;
 }
+
