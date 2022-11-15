@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void printa(vector<float> a){
+    for(int i=0;i<a.size();i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
 float mean(vector<float> arr){
     float sum = 0;
     int size_arr = arr.size();
@@ -91,7 +98,24 @@ int main(){
                 a4.push_back(arr[j]);
                 a4[0] = mean(a4);
             }
+
         }
+        if( i == 49){
+                cout<<endl;
+                cout<<"A1 :"<<endl;
+                printa(a1);
+                cout<<endl;
+                cout<<"A2 :"<<endl;
+                printa(a2);
+                cout<<endl;
+                cout<<"A3 :"<<endl;
+                printa(a3);
+                cout<<endl;
+                cout<<"A4 :"<<endl;
+                printa(a4);
+                cout<<endl;
+
+            }
         g1.push_back(a1[0]);
         g2.push_back(a2[0]);
         g3.push_back(a3[0]);
@@ -123,4 +147,3 @@ int main(){
     cout<<endl;
     return 0;
 }
-
