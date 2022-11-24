@@ -98,7 +98,7 @@ int main(){
                 a4.push_back(arr[j]);
                 a4[0] = mean(a4);
             }
-
+            min_so_far = INT_MAX;
         }
         if( i == 49){
                 cout<<endl;
