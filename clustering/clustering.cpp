@@ -120,6 +120,22 @@ int main(){
         g2.push_back(a2[0]);
         g3.push_back(a3[0]);
         g4.push_back(a4[0]);
+        if(abs(g1[i] - g1[i-1])<0.001 && abs(g2[i] - g2[i-1])<0.001 && abs(g3[i] - g3[i-1])<0.001 && abs(g4[i] - g4[i-1])<0.001){
+            cout<<endl;
+            cout<<"A1 :"<<endl;
+            printa(a1);
+            cout<<endl;
+            cout<<"A2 :"<<endl;
+            printa(a2);
+            cout<<endl;
+            cout<<"A3 :"<<endl;
+            printa(a3);
+            cout<<endl;
+            cout<<"A4 :"<<endl;
+            printa(a4);
+            cout<<endl;
+            break;
+        }
 
     }
     cout<<"G1 :"<<endl;
