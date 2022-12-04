@@ -38,7 +38,6 @@ void initialise(int board[10])
         board[i] = 2;
     }
 }
-
 bool isWin(int board[])
 {
     for (int row = 0; row<3; row++)
@@ -75,9 +74,36 @@ bool gameOver(int board[])
     return isWin(board);
 }
 
+float rating_function(int board[], bool isAi){
+    if(isAi && isWin){
+        return -1;
+    }
+    if(!isAi && isWin){
+        return 1;
+    }
+    if(board[1] == 3 && board[5] == 3 && !isAi){
+        return 0.6;
+    }
+    if(board[9] == 3 && board[5] == 3 && !isAi){
+        return 0.6;
+    }
+    if(board[1] == 5 && board[5] == 5 && isAi){
+        return -0.6;
+    }
+    if(board[9] == 5 && board[5] == 5 && isAi){
+        return -0.6;
+    }
+    if(board[5] == 3 && !isAi){
+        return 0.3;
+    }
+    if(board[5] == 5 && isAi){
+        return -0.3;
+    }
+    return 0;
+}
 int minimax(int board[], int depth, bool isAI, int edepth)
 {
-    int score = 0;
+    int score = rating_function(board,isAI);
     int bestScore = 0;
     if (gameOver(board) == true)
     {
